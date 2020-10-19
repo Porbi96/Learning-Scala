@@ -30,7 +30,6 @@ object Exercise1 {
     println(findPiValue(5000).toString)
     println(findPiValue(10000).toString)
     println(findPiValue(20000).toString)
-    println(findPiValue(50000).toString)
     println(findPiValue(100000).toString)
     println(findPiValue(200000).toString)
   }
