@@ -9,7 +9,7 @@ object Exercise1 {
     var insideN = 0
 
     // Generate sequence of tuples (points)
-    val points = for(x <- Range(0, N)) yield (generator.nextDouble(), generator.nextDouble())
+    val points = for(_ <- Range(0, N)) yield (generator.nextDouble(), generator.nextDouble())
 
     // Check if points are inside a circle
     for (i <- points) {
@@ -32,10 +32,6 @@ object Exercise1 {
     println(findPiValue(20000).toString)
     println(findPiValue(50000).toString)
     println(findPiValue(100000).toString)
-    println(findPiValue(200000).toString)
-    println(findPiValue(200000).toString)
-    println(findPiValue(200000).toString)
-    println(findPiValue(200000).toString)
     println(findPiValue(200000).toString)
   }
 }
