@@ -52,21 +52,21 @@ object Lab2 {
     matrix.foreach(row => niceRowPrint(row))
   }
 
-  def main(args: Array[String]): Unit = {
-    if (args.length == 0) {
-      val vals = generateNumbersExceptFromSquares(50)
-    }
-    else if (args.length == 1) {
-      val vals = generateNumbersExceptFromSquares(args(0).toInt)
-    }
-    else if (args.length == 4) {
-      solvePythagoreanTriangle(args)
-    }
-
-    val x = Array.ofDim[Int](4, 4)
-    for (i <- Range(0, 4); j <- Range(0,4)) x(i)(j) = i+j
-
-    nicePrint(x)
+//  def main(args: Array[String]): Unit = {
+//    if (args.length == 0) {
+//      val vals = generateNumbersExceptFromSquares(50)
+//    }
+//    else if (args.length == 1) {
+//      val vals = generateNumbersExceptFromSquares(args(0).toInt)
+//    }
+//    else if (args.length == 4) {
+//      solvePythagoreanTriangle(args)
+//    }
+//
+//    val x = Array.ofDim[Int](4, 4)
+//    for (i <- Range(0, 4); j <- Range(0,4)) x(i)(j) = i+j
+//
+//    nicePrint(x)
 
 
 //    println(g.mkString(" "))
@@ -75,5 +75,5 @@ object Lab2 {
 //    println(findPiValue(20000).toString)
 //    println(findPiValue(100000).toString)
 //    println(findPiValue(200000).toString)
-  }
+//  }
 }
