@@ -47,6 +47,25 @@ object Lab3 {
     repNtail(N-1, func, func(first))
   }
 
+  def calculator(cmds: Array[String]): Double = {
+    val oneArgMap = Map[String, (Double) => Double]("sin" -> scala.math.sin, "cos" -> math.cos, "tan" -> math.tan,
+                                                    "sqrt" -> math.sqrt, "log" -> math.log, "exp" -> math.exp)
+    val twoArgMap = Map[String, (Double, Double) => Double]("+" -> ((a:Double, b:Double) => {a + b}),
+                                                            "-" -> ((a:Double, b:Double) => {a - b}),
+                                                            "/" -> ((a:Double, b:Double) => {a /b}),
+                                                            "*" -> ((a:Double, b:Double) => {a * b}),
+                                                            "^" -> scala.math.pow)
+
+    if (cmds.length == 2) {
+      val (f, x) = (oneArgMap(cmds(0)), cmds(1).toDouble)
+      f(x)
+    } else if (cmds.length == 3) {
+      val (f, x, y) = (twoArgMap(cmds(1)), cmds(0).toDouble, cmds(2).toDouble)
+      f(x,y)
+    } else 0.0
+
+  }
+
 
   def main(args: Array[String]): Unit = {
     val x = Array.ofDim[Int](4,5)
@@ -72,12 +91,16 @@ object Lab3 {
     val z = takeLarger(x, y)
     arrayPrint(z)
 
+    val calc = calculator(Array[String]("3", "^", "2"))
+
     // ======================================================================
-    println("pi:" + pi)
-    println("pi(pi): " + pi(pi))
-    println("pi(pi(pi)): " + pi(pi(pi)))
-    println("repN(5, (x: Int) => 2*x: " + repN(5, (x: Int) => 2*x, 1))
-    println("repN(5, (x: Int) => 2*x: " + repNtail(5, (x: Int) => 2*x, 1))
+//    println("pi:" + pi)
+//    println("pi(pi): " + pi(pi))
+//    println("pi(pi(pi)): " + pi(pi(pi)))
+//    println("repN(5, (x: Int) => 2*x: " + repN(5, (x: Int) => 2*x, 1))
+//    println("repN(5, (x: Int) => 2*x: " + repNtail(5, (x: Int) => 2*x, 1))
+
+    println(calc.toString)
 
   }
 }
