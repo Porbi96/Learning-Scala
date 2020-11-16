@@ -90,17 +90,17 @@ object ColorsShapesHierarchy {
     override def toString: String = super.toString + s" with color r:$red g:$green b:$blue"
   }
 
-  def main(args: Array[String]): Unit = {
-    val a = ColorTriangle( center = (0,0), rotation = 30, size = 25, color = (20, 20, 120) )
-    println(a)
-    a.setColor(100,0,70)
-    println(a)
-    a.increaseColorBy('r', 2.0)// red = red + red * 2
-    println(a)
-    val b = ColorSquare( center = (3,3), size = 12, color = (20, 20, 120))
-    b.setColor(10, 255, 0)
-    b.decreaseColorBy('g', 0.3)
-    val shapes = List[Shape](Triangle( (0,0), 90, 50), a, Square( (3,-3), 10), b)
-    println( shapes.mkString("\n"))
-  }
+//  def main(args: Array[String]): Unit = {
+//    val a = ColorTriangle( center = (0,0), rotation = 30, size = 25, color = (20, 20, 120) )
+//    println(a)
+//    a.setColor(100,0,70)
+//    println(a)
+//    a.increaseColorBy('r', 2.0)// red = red + red * 2
+//    println(a)
+//    val b = ColorSquare( center = (3,3), size = 12, color = (20, 20, 120))
+//    b.setColor(10, 255, 0)
+//    b.decreaseColorBy('g', 0.3)
+//    val shapes = List[Shape](Triangle( (0,0), 90, 50), a, Square( (3,-3), 10), b)
+//    println( shapes.mkString("\n"))
+//  }
 }
