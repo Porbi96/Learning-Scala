@@ -1,27 +1,27 @@
 object SimpleClasses {
-// =====================================================================================================================
-  class Angle(val angle: Double) {
-    def +(other: Angle): Angle = Angle(rescaleAngle(this.angle + other.angle))
-
-    def -(other: Angle): Angle = Angle(rescaleAngle(this.angle - other.angle))
-
-    def *(multiplicand: Double): Angle = Angle(rescaleAngle(this.angle * multiplicand))
-
-    def /(divisor: Double): Angle = Angle(rescaleAngle(this.angle / divisor))
-
-    @scala.annotation.tailrec
-    final private def rescaleAngle(a: Double): Double = {
-      if (a < -math.Pi) {rescaleAngle(a + 2*math.Pi)}
-      else if (a >= math.Pi) {rescaleAngle(a - 2*math.Pi)}
-      else {a}
-    }
-
-    override def toString: String = "Angle: " + (angle/3.14).toString + " pi"
-  }
-
-  object Angle {
-    def apply(angle: Double): Angle = new Angle(angle)
-  }
+//// =====================================================================================================================
+//  class Angle(val angle: Double) {
+//    def +(other: Angle): Angle = Angle(rescaleAngle(this.angle + other.angle))
+//
+//    def -(other: Angle): Angle = Angle(rescaleAngle(this.angle - other.angle))
+//
+//    def *(multiplicand: Double): Angle = Angle(rescaleAngle(this.angle * multiplicand))
+//
+//    def /(divisor: Double): Angle = Angle(rescaleAngle(this.angle / divisor))
+//
+//    @scala.annotation.tailrec
+//    final private def rescaleAngle(a: Double): Double = {
+//      if (a < -math.Pi) {rescaleAngle(a + 2*math.Pi)}
+//      else if (a >= math.Pi) {rescaleAngle(a - 2*math.Pi)}
+//      else {a}
+//    }
+//
+//    override def toString: String = "Angle: " + (angle/3.14).toString + " pi"
+//  }
+//
+//  object Angle {
+//    def apply(angle: Double): Angle = new Angle(angle)
+//  }
 
 // =====================================================================================================================
 
@@ -82,27 +82,27 @@ object SimpleClasses {
 
 // =====================================================================================================================
 
-  def main(args: Array[String]): Unit = {
-    val a = Angle(2)
-    val b = a+Angle(1.15)
-    println(b)
-
-    var el = ExpensesList()
-    el += Expense(5, "Bread", "food")
-    el += Expense(7, "Butter", "food")
-    el += Expense(3.2, "Tomatoes", "food")
-    el += Expense(18, "Star Wars ticket", "entertainment")
-    el.printList()
-    println(el.sum)
-    println(el.max)
-
-    val x = Complex(1,2)
-    val y = Complex(3,2)
-    println("x " + x + " y " + y + " x+y " +(x+y) + " x-y " +(x-y))
-    val f = Complex.polar(r=3, angle=math.Pi)
-    println(f)
-    println( "|x| "+ x.r + " angle " +x.angle)
-  }
+//  def main(args: Array[String]): Unit = {
+//    val a = Angle(2)
+//    val b = a+Angle(1.15)
+//    println(b)
+//
+//    var el = ExpensesList()
+//    el += Expense(5, "Bread", "food")
+//    el += Expense(7, "Butter", "food")
+//    el += Expense(3.2, "Tomatoes", "food")
+//    el += Expense(18, "Star Wars ticket", "entertainment")
+//    el.printList()
+//    println(el.sum)
+//    println(el.max)
+//
+//    val x = Complex(1,2)
+//    val y = Complex(3,2)
+//    println("x " + x + " y " + y + " x+y " +(x+y) + " x-y " +(x-y))
+//    val f = Complex.polar(r=3, angle=math.Pi)
+//    println(f)
+//    println( "|x| "+ x.r + " angle " +x.angle)
+//  }
 }
 
 

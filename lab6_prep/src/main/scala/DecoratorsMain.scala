@@ -1,23 +1,23 @@
-import StringDecorators._
-
 object DecoratorsMain {
+
+  trait htmlH2 {
+    override def toString: String = "<H2>" + super.toString + "</H2>"
+  }
+
+  trait htmlI {
+    override def toString: String = "<I>" + super.toString + "</I>"
+  }
+
   class StringWrap (val s: String) {
     override def toString: String = s
   }
 
-  class Pre (val text: String) extends StringWrap(text) with htmlH2 with htmlI {}
+  class Header (val text: String) extends StringWrap(text) with htmlH2 with htmlI
 
-  class X (val text: String, override val llen: Int) extends StringWrap(text) with Capitalisation with PageStretch {}
-
-//  def main(args: Array[String]): Unit = {
-//    val h = new Pre("Paragraph header")
-//    println(h)
-//
-//    println(new X("abra ka dabra", 50))
-//    println(new X("abra ka dabra", 30))
-//    println(new X("abra ka dabra", 20))
-//
-//    val z = new StringWrap("a tricky text with tricky content") with PageStretch
-//    println(z)
-//  }
+  def main(args: Array[String]): Unit = {
+    val h = new Header("This is header")
+    val it = new StringWrap("Another text") with htmlI
+    println(h)
+    println(it)
+  }
 }
