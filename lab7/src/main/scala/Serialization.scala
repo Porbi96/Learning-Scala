@@ -1,5 +1,4 @@
 object Serialization {
-
   def wrapType(x: Any): String = x match {
     case n: Int => "Int(" + n + ")"
     case d: Double => "Double(" + d + ")"
@@ -13,14 +12,12 @@ object Serialization {
       case Nil => result
       case head :: tail => _stream(tail, result + wrapType(head) + " ")
     }
-
     _stream(l)
   }
 
-//  def main(args: Array[String]): Unit = {
-//    val l = List(1, "hello", 2.56, 0x45, "key")
-//
-//    val streamed = stream(l)
-//    print(streamed)
-//  }
+  def main(args: Array[String]): Unit = {
+    val l = List(1, "hello", 2.56, 0x45, "key")
+    val streamed = stream(l)
+    println(streamed)
+  }
 }
