@@ -33,7 +33,9 @@ class Particle (var x: Int, var y: Int) extends Actor {
 
     case ma: RandomMoveAcknowledged => energy += ma.deltaEnergy
 
-    case _: PositionOccupiedRequest => {x = old_x; y = old_y}
+    case _: PositionOccupiedRequest =>
+      x = old_x
+      y = old_y
     case _: RestoreMove => restoreParticlePosition()
 
   }
@@ -50,8 +52,8 @@ class Particle (var x: Int, var y: Int) extends Actor {
   }
 
   def restoreParticlePosition(): Unit = {
-    var helper_x: Int = old_x
-    var helper_y: Int = old_y
+    val helper_x: Int = old_x
+    val helper_y: Int = old_y
 
     old_x = x
     old_y = y
