@@ -1,3 +1,5 @@
+import java.io.{File, PrintWriter}
+
 import akka.actor._
 
 import scala.collection.mutable.ListBuffer
@@ -72,7 +74,7 @@ class Box extends Actor {
         broadcast_msg(mr, withSender = false)
       }
       else {
-        println("Position already occupied")
+//        println("Position already occupied")
         context.sender() ! PositionOccupiedRequest()
         sendRandomMoveRequest()
       }
@@ -87,12 +89,11 @@ class Box extends Actor {
           sendRandomMoveRequest()
         }
         else if (globalEnergy < oldGlobalEnergy) {
-          println(s"Found better distribution. New global energy: $globalEnergy")
-          Thread.sleep(10)
+//          Thread.sleep(10)
           sendRandomMoveRequest()
           if (boxContext.restoringPos) boxContext.restoringPos = false
           else {
-            println(s"Found better distribution. New global energy: $globalEnergy")
+//            println(s"Found better distribution. New global energy: $globalEnergy")
             boxContext.worsePosCnt = 0
           }
         }
@@ -100,14 +101,32 @@ class Box extends Actor {
           boxContext.restoringPos = true
           boxContext.particleMoved ! RestoreMove()
           boxContext.worsePosCnt += 1
-          if (boxContext.worsePosCnt >= 50) {
-            println(particlesIndeces.mkString("\n"))
+          if (boxContext.worsePosCnt >= 400) {
+            println(s"Final global energy: $globalEnergy")
+//            println(particlesIndeces.mkString("\n"))
+            writeParticlePosToFile()
             System.exit(0)
           }
         }
       }
 
     case _ => println("Got unexpected msg.")
+  }
+
+  def writeParticlePosToFile(): Unit = {
+
+    val file = new File("particlePos.txt")
+
+    if (file.exists()) {
+      file.delete()
+    }
+    val pw = new PrintWriter(file)
+
+    pw.write("x,y\n")
+    for (e <- particlesIndeces) {
+      pw.write("" + e._1 +"," + e._2 + "\n")
+    }
+    pw.close()
   }
 
   def isPosPermitted(pos: (Int, Int)): Boolean = {
@@ -140,6 +159,7 @@ class Box extends Actor {
         j += 1
       }
     } while (i < amount && j < 10000)
+    println("Spawned " + context.children.size + " particles.")
   }
 
   def sendRandomMoveRequest(): Unit = {

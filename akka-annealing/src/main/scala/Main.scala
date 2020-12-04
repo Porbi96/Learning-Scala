@@ -6,6 +6,5 @@ object Main extends App {
   println("[DEBUG] Creating box.")
   val box = system.actorOf(Props[Box], name = "box")
   println("[DEBUG] Sending init msg.")
-  box ! InitBox((100, 100), 20)
-
+  box ! InitBox((200, 200), 15000)
 }

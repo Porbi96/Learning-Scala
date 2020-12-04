@@ -2,8 +2,8 @@ import akka.actor._
 
 class Particle (var x: Int, var y: Int) extends Actor {
   var energy: Double = 0.0
-  val a: Double = 2.0
-  val b: Double = 155.0
+  val a: Double = 1.0
+  val b: Double = 5.0
 
   var old_x: Int = 0;
   var old_y: Int = 0;
