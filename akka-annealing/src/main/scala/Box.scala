@@ -101,7 +101,7 @@ class Box extends Actor {
           boxContext.restoringPos = true
           boxContext.particleMoved ! RestoreMove()
           boxContext.worsePosCnt += 1
-          if (boxContext.worsePosCnt >= 400) {
+          if (boxContext.worsePosCnt >= 300) {
             println(s"Final global energy: $globalEnergy")
 //            println(particlesIndeces.mkString("\n"))
             writeParticlePosToFile()
