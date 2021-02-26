@@ -1,5 +1,5 @@
 object ConsumersAndConsumed {
-
+// test
   trait Food {}
 
   abstract class Animal {
